@@ -3,15 +3,15 @@
 import os
 import glob
 
-def getList(dir):
-    files = os.listdir(dir)  # data폴더에 저장된 것들 리스트로 불러옴
+def getList():
+    files = os.listdir('./testdata')  # data폴더에 저장된 것들 리스트로 불러옴
     listStr = ''
 
     for item in files:
         listStr = listStr + \
             '''
-            <input type="submit" name="pageId" value="{}"><br>
-            '''.format(item)
+            <li><a href="subdirpg.py?id={name}">{name}</a></li>
+            '''.format(name=item)
     return listStr
 
 
@@ -23,16 +23,23 @@ def getCsvList(subdir):
         mcrawllist = ''
         for file in files:
             if 'member' not in file:
-                acrawllist += file + ',<br>'
+                acrawllist += file + ','
             else:
-                mcrawllist += file + ',<br>'
+                mcrawllist += file + ','
         return acrawllist, mcrawllist
     else:
-        arawlist = []
-        mrawlist = []
+        arawlist = ''
+        mrawlist = ''
         for file in files:
             if 'D171' in file:
-                arawlist.append('{}'.format(file))
+                arawlist += file + '\n'
             else:
-                mrawlist.append('{}'.format(file))
+                mrawlist += file + '\n'
         return arawlist, mrawlist
+
+        # for file in files:
+        #     if 'D171' in file:
+        #         arawlist.append('{}'.format(file))
+        #     else:
+        #         mrawlist.append('{}'.format(file))
+        # return arawlist, mrawlist

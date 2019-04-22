@@ -35,13 +35,11 @@ print('''
 <body>
   <h3><a href="index.py">datasets</a></h3>
   <ol>
-    <form action = "subdirpg.py?id={pageid}" method = "post">
-        {listStr}
-    </form>
+    {listStr}
   </ol>
 </body>
 
 </html>
 
-'''.format(pageid=pageId, listStr=viewlist.getList('./testdata'))
+'''.format(pageid=pageId, listStr=viewlist.getList())
       )
